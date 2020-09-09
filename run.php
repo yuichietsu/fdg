@@ -1,7 +1,11 @@
 <?php
-error_reporting(E_ERROR);
+namespace oum;
 
+error_reporting(E_ERROR);
 require_once "libs/MapMaker.php";
+require_once "libs/MapFormatter.php";
 
 $mm = new MapMaker();
-echo $mm->getMatrixData(20);
+$mm->generate(20);
+$mf = new MapFormatter();
+echo $mf->format($mm);
