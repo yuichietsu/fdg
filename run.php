@@ -10,14 +10,17 @@ exit(main());
 function main()
 {
     $r = 0;
-    $opts = getopt('t:');
+    $size = 20;
     $method = 'simple';
+    $opts = getopt('t:s:');
     if (isset($opts['t'])) {
         $method = $opts['t'];
     }
-
+    if (isset($opts['s'])) {
+        $size = $opts['s'];
+    }
     $mm = new MapMaker();
-    $mm->generate(20);
+    $mm->generate($size);
     $mf = new MapFormatter();
     echo $mf->simple($mm);
     if (method_exists($mf, $method)) {

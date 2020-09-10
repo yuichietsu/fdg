@@ -35,14 +35,17 @@ class MapFormatter
          32: R
          64: D
         128: L
+        Otehrs
+        256: In Walls
          */
         $text = '';
         $size = $map->getMatrixSize();
         for ($y = 1; $y < $size - 1; $y++) {
             $strip = [];
             for ($x = 1; $x < $size - 1; $x++) {
-                $v = 0;
+                $v = 256;
                 if ($map->getMatrixValue($x, $y)) {
+                    $v = 0;
                     !$map->getMatrixValue($x, $y - 1) && $v += 1;
                     !$map->getMatrixValue($x + 1, $y) && $v += 2;
                     !$map->getMatrixValue($x, $y + 1) && $v += 4;
